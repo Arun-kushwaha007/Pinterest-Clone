@@ -2,41 +2,29 @@ var express = require('express');
 var router = express.Router();
 const userModel = require("./users");
 const postModel = require("./posts");
-
+const passport = require("passport");
+const localStrategy = require("passport-local");
+passport.authenticate(new localStrategy(userModel.authenticate()));
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/alluserposts', async function(req,res, next){
-  let user = await userModel.findOne({_id: "664198b9506c7030a3f90ddb"}).populate('posts');
-  res.send(user);
-});
-
-router.get('/createuser',async function(req,res, next){
-  let createduser = await userModel.create({
-    username:"arun",
-    password:"arun",
-    posts: [],
-    email: "arunsk1310@gmail.com",
-    fullName: "Arun Singh Kushwaha",
+// router of register
+router.post("/register",  function(req, res){
+  const { username, email, fullname } = req.body;
+  const userData = new userModel({ username, email, fullname });
+  
+  userModel.register(userData, req.body.password).then(function(){
+    passport.authenticate("local")(req, res, function(){
+      res.redirect("/profile"); 
+    })
   })
-  res.send(createduser);
 })
 
-
-
-// creating post
-router.get('/createpost', async function(req, res, next){
-  let createdpost = await postModel.create({
-    postText: "Kushw ho sab",
-    user: "664198b9506c7030a3f90ddb"
-  });
-  let user = await userModel.findOne({_id: "664198b9506c7030a3f90ddb"});
-  user.posts.push(createdpost._id);
-  await user.save();
-
-  res.send("done");
+// router of login
+router.post("/login", function(req,res){
+  
 })
 
 module.exports = router;
