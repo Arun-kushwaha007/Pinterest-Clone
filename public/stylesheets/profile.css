@@ -10,6 +10,13 @@ body {
     margin: 0 auto;
     padding: 20px;
   }
+
+  .flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: start;
+  }
   
   .cardpers {
     background-color: #fff;

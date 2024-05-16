@@ -36,3 +36,17 @@ router.get('/createpost', async function(req, res, next){
 
   res.send("done");
 })
+
+
+
+
+
+/// further :-
+
+posts
+image
+caption
+
+multer
+image upload
+caption
