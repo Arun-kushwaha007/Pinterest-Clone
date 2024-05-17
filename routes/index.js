@@ -33,7 +33,15 @@ router.post('/upload', isLoggedIn ,upload.single("file") ,async function(req, re
   user.posts.push(post._id);
   await user.save(); 
   res.redirect("/profile");
+  res.redirect("/profile");
 });
+
+router.post('/fileupload', isLoggedIn, upload.single("image"), async function(req,res, next){
+  const user = await userModel.findOne({username: req.session.passport.user})
+  user.profileImage = req.file.filename;
+  await user.save();
+  res.redirect("/profile");
+})
 
 // profile router 
 router.get('/profile',isLoggedIn, async function(req, res, next) {
@@ -41,7 +49,7 @@ router.get('/profile',isLoggedIn, async function(req, res, next) {
       username: req.session.passport.user
     })
     .populate("posts");
-    console.log(user)
+    // console.log(user)
   res.render("profile",{user});
 });
 

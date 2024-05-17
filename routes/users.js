@@ -12,6 +12,9 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
   },
+  profileImage:{
+    type: String
+  },
   posts: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post'
@@ -27,6 +30,10 @@ const userSchema = new mongoose.Schema({
   fullname: {
     type: String,
     required: true
+  },
+  boards: {
+    type: Array,
+    default: []
   }
 });
 
