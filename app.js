@@ -10,7 +10,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport = require('passport');
 
-
 var app = express();
 
 // view engine setup
@@ -19,15 +18,15 @@ app.set('view engine', 'ejs');
 
 app.use(flash());
 app.use(expressSession({
-  resave:false,
+  resave: false,
   saveUninitialized: false,
   secret: "heyThere"
-}))
+}));
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.serializeUser(usersRouter.serializeUser());
 passport.deserializeUser(usersRouter.deserializeUser());
-
 
 app.use(logger('dev'));
 app.use(express.json());

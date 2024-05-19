@@ -50,13 +50,13 @@
             <div class="w-52 h-40 bg-zinc-200 rounded-lg overflow-hidden">
               <img
                 class="w-full h-full object-cover"
-                src="https://i.pinimg.com/736x/8a/23/10/8a23103e33596f488635f394c936b270.jpg"
+                src="/images/uploads/<%= user?.posts[0]?.image %>"
                 alt=""
               />
             </div>
-            <h3 class="text-xl font-semibold mt-4 text-white">All Pins</h3>
+            <a href="/show/posts"  class="inline-block text-xl font-semibold mt-4 text-white">Your Uploaded Pins</a>
             <h5 class="text-sm font-medium text-zinc-200 opacity-60">
-              28 Pins
+              <%= user.posts.length%> Pins
             </h5>
           </div>
         </div>
