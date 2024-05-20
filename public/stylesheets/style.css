@@ -4,7 +4,10 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #dadada;
+  background-image: url("https://images.unsplash.com/photo-1587586291914-bdbe84ec1416?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  /* background-color: #dadada; */
+  background-size: cover;
+  background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
 }
 .container {
@@ -31,6 +34,9 @@ body {
   width: 70px;
   position: relative;
   top: 20px;
+  /* background: #000; */
+  left: 35%;
+
 }
 .header {
   font-size: 32px;
